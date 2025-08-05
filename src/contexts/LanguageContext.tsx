@@ -43,11 +43,43 @@ const translations: TranslationData = {
       en: 'Connecting the exceptional quality of Brazilian meats to the Chinese market with safety, reliability and excellence.',
       zh: '以安全、可靠和卓越的品质将巴西优质肉类连接到中国市场。'
     },
-    cta: {
-      pt: 'Conheça Nossos Produtos',
-      en: 'Discover Our Products',
-      zh: '了解我们的产品'
-    }
+      cta: {
+        pt: 'Conheça Nossos Produtos',
+        en: 'Discover Our Products',
+        zh: '了解我们的产品'
+      },
+      quality: {
+        certification: {
+          pt: 'Certificação Internacional',
+          en: 'International Certification',
+          zh: '国际认证'
+        },
+        certificationDesc: {
+          pt: 'Padrões globais de qualidade',
+          en: 'Global quality standards',
+          zh: '全球质量标准'
+        },
+        export: {
+          pt: 'Exportação Especializada',
+          en: 'Specialized Export',
+          zh: '专业出口'
+        },
+        exportDesc: {
+          pt: 'Foco no mercado chinês',
+          en: 'Focus on Chinese market',
+          zh: '专注中国市场'
+        },
+        premium: {
+          pt: 'Qualidade Premium',
+          en: 'Premium Quality',
+          zh: '优质品质'
+        },
+        premiumDesc: {
+          pt: 'Carnes brasileiras selecionadas',
+          en: 'Selected Brazilian meats',
+          zh: '精选巴西肉类'
+        }
+      }
   },
   about: {
     title: {

@@ -17,6 +17,14 @@ export interface TranslationData {
     title: Translation;
     subtitle: Translation;
     cta: Translation;
+    quality: {
+      certification: Translation;
+      certificationDesc: Translation;
+      export: Translation;
+      exportDesc: Translation;
+      premium: Translation;
+      premiumDesc: Translation;
+    };
   };
   about: {
     title: Translation;

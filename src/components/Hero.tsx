@@ -68,8 +68,8 @@ export const Hero = () => {
                 <Shield className="h-6 w-6" />
               </div>
               <div>
-                <p className="font-semibold">Certificação Internacional</p>
-                <p className="text-sm text-white/70">Padrões globais de qualidade</p>
+                <p className="font-semibold">{t('hero.quality.certification')}</p>
+                <p className="text-sm text-white/70">{t('hero.quality.certificationDesc')}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 text-white/90">
@@ -77,8 +77,8 @@ export const Hero = () => {
                 <Globe className="h-6 w-6" />
               </div>
               <div>
-                <p className="font-semibold">Exportação Especializada</p>
-                <p className="text-sm text-white/70">Foco no mercado chinês</p>
+                <p className="font-semibold">{t('hero.quality.export')}</p>
+                <p className="text-sm text-white/70">{t('hero.quality.exportDesc')}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 text-white/90">
@@ -86,8 +86,8 @@ export const Hero = () => {
                 <Award className="h-6 w-6" />
               </div>
               <div>
-                <p className="font-semibold">Qualidade Premium</p>
-                <p className="text-sm text-white/70">Carnes brasileiras selecionadas</p>
+                <p className="font-semibold">{t('hero.quality.premium')}</p>
+                <p className="text-sm text-white/70">{t('hero.quality.premiumDesc')}</p>
               </div>
             </div>
           </div>
