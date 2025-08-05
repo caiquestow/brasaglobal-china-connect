@@ -15,19 +15,19 @@ export const Products = () => {
       title: t('products.beef'),
       description: t('products.beefDesc'),
       image: premiumBeef,
-      features: ['Cortes Nobres', 'Certificação SIF', 'Rastreabilidade', 'Qualidade Premium']
+      features: [t('products.features.beef1'), t('products.features.beef2'), t('products.features.beef3'), t('products.features.beef4')]
     },
     {
       title: t('products.chicken'),
       description: t('products.chickenDesc'),
       image: premiumChicken,
-      features: ['Processamento Moderno', 'Controle HACCP', 'Frescor Garantido', 'Padrão Internacional']
+      features: [t('products.features.chicken1'), t('products.features.chicken2'), t('products.features.chicken3'), t('products.features.chicken4')]
     },
     {
       title: t('products.pork'),
       description: t('products.porkDesc'),
       image: premiumPork,
-      features: ['Criação Sustentável', 'Bem-Estar Animal', 'Inspeção Rigorosa', 'Exportação Certificada']
+      features: [t('products.features.pork1'), t('products.features.pork2'), t('products.features.pork3'), t('products.features.pork4')]
     }
   ];
 
@@ -46,7 +46,7 @@ export const Products = () => {
             {t('products.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Oferecemos uma seleção premium de carnes brasileiras, processadas com os mais altos padrões de qualidade e segurança para o mercado internacional.
+            {t('products.subtitle')}
           </p>
           <div className="w-24 h-1 bg-gradient-secondary mx-auto"></div>
         </div>
@@ -90,7 +90,7 @@ export const Products = () => {
                   onClick={scrollToContact}
                   className="w-full bg-gradient-primary hover:bg-primary-hover group"
                 >
-                  Solicitar Cotação
+                  {t('products.quote')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
@@ -102,16 +102,16 @@ export const Products = () => {
         <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center">
           <div className="max-w-4xl mx-auto">
             <h3 className="text-3xl font-heading font-bold text-white mb-4">
-              Certificações e Qualidade Garantida
+              {t('products.certifications.title')}
             </h3>
             <p className="text-xl text-white/90 mb-8">
-              Nossos produtos atendem aos mais rigorosos padrões internacionais de qualidade e segurança alimentar.
+              {t('products.certifications.description')}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {['SIF', 'HACCP', 'ISO 22000', 'Halal'].map((cert, index) => (
                 <div key={index} className="bg-white/20 rounded-lg p-4">
                   <div className="text-2xl font-bold text-white mb-1">{cert}</div>
-                  <div className="text-sm text-white/80">Certificado</div>
+                  <div className="text-sm text-white/80">{t('products.certifications.certified')}</div>
                 </div>
               ))}
             </div>

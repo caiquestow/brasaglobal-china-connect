@@ -7,10 +7,10 @@ export const About = () => {
   const { t } = useLanguage();
 
   const values = [
-    { icon: Heart, title: 'Qualidade', desc: 'Compromisso com excelência' },
-    { icon: Users, title: 'Transparência', desc: 'Relacionamentos honestos' },
-    { icon: Leaf, title: 'Sustentabilidade', desc: 'Práticas responsáveis' },
-    { icon: Truck, title: 'Confiabilidade', desc: 'Entregas garantidas' }
+    { icon: Heart, title: t('about.valuesList.quality'), desc: t('about.valuesList.qualityDesc') },
+    { icon: Users, title: t('about.valuesList.transparency'), desc: t('about.valuesList.transparencyDesc') },
+    { icon: Leaf, title: t('about.valuesList.sustainability'), desc: t('about.valuesList.sustainabilityDesc') },
+    { icon: Truck, title: t('about.valuesList.reliability'), desc: t('about.valuesList.reliabilityDesc') }
   ];
 
   return (

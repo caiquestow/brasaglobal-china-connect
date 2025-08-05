@@ -116,6 +116,48 @@ const translations: TranslationData = {
       pt: 'Qualidade, Transparência, Sustentabilidade, Inovação e Compromisso com nossos parceiros.',
       en: 'Quality, Transparency, Sustainability, Innovation and Commitment to our partners.',
       zh: '质量、透明度、可持续性、创新和对合作伙伴的承诺。'
+    },
+    valuesList: {
+      quality: {
+        pt: 'Qualidade',
+        en: 'Quality',
+        zh: '质量'
+      },
+      qualityDesc: {
+        pt: 'Compromisso com excelência',
+        en: 'Commitment to excellence',
+        zh: '对卓越的承诺'
+      },
+      transparency: {
+        pt: 'Transparência',
+        en: 'Transparency',
+        zh: '透明度'
+      },
+      transparencyDesc: {
+        pt: 'Relacionamentos honestos',
+        en: 'Honest relationships',
+        zh: '诚实的关系'
+      },
+      sustainability: {
+        pt: 'Sustentabilidade',
+        en: 'Sustainability',
+        zh: '可持续性'
+      },
+      sustainabilityDesc: {
+        pt: 'Práticas responsáveis',
+        en: 'Responsible practices',
+        zh: '负责任的做法'
+      },
+      reliability: {
+        pt: 'Confiabilidade',
+        en: 'Reliability',
+        zh: '可靠性'
+      },
+      reliabilityDesc: {
+        pt: 'Entregas garantidas',
+        en: 'Guaranteed deliveries',
+        zh: '保证交付'
+      }
     }
   },
   products: {
@@ -123,6 +165,11 @@ const translations: TranslationData = {
       pt: 'Nossos Produtos Premium',
       en: 'Our Premium Products',
       zh: '我们的优质产品'
+    },
+    subtitle: {
+      pt: 'Oferecemos uma seleção premium de carnes brasileiras, processadas com os mais altos padrões de qualidade e segurança para o mercado internacional.',
+      en: 'We offer a premium selection of Brazilian meats, processed with the highest standards of quality and safety for the international market.',
+      zh: '我们提供优质的巴西肉类选择，按照最高的质量和安全标准为国际市场加工。'
     },
     beef: {
       pt: 'Carne Bovina',
@@ -153,6 +200,42 @@ const translations: TranslationData = {
       pt: 'Carne suína premium de criação sustentável, atendendo rigorosos controles sanitários.',
       en: 'Premium pork from sustainable farming, meeting strict sanitary controls.',
       zh: '来自可持续养殖的优质猪肉，符合严格的卫生控制标准。'
+    },
+    features: {
+      beef1: { pt: 'Cortes Nobres', en: 'Premium Cuts', zh: '优质切割' },
+      beef2: { pt: 'Certificação SIF', en: 'SIF Certification', zh: 'SIF认证' },
+      beef3: { pt: 'Rastreabilidade', en: 'Traceability', zh: '可追溯性' },
+      beef4: { pt: 'Qualidade Premium', en: 'Premium Quality', zh: '优质品质' },
+      chicken1: { pt: 'Processamento Moderno', en: 'Modern Processing', zh: '现代加工' },
+      chicken2: { pt: 'Controle HACCP', en: 'HACCP Control', zh: 'HACCP控制' },
+      chicken3: { pt: 'Frescor Garantido', en: 'Guaranteed Freshness', zh: '保证新鲜' },
+      chicken4: { pt: 'Padrão Internacional', en: 'International Standard', zh: '国际标准' },
+      pork1: { pt: 'Criação Sustentável', en: 'Sustainable Farming', zh: '可持续养殖' },
+      pork2: { pt: 'Bem-Estar Animal', en: 'Animal Welfare', zh: '动物福利' },
+      pork3: { pt: 'Inspeção Rigorosa', en: 'Rigorous Inspection', zh: '严格检验' },
+      pork4: { pt: 'Exportação Certificada', en: 'Certified Export', zh: '认证出口' }
+    },
+    quote: {
+      pt: 'Solicitar Cotação',
+      en: 'Request Quote',
+      zh: '索取报价'
+    },
+    certifications: {
+      title: {
+        pt: 'Certificações e Qualidade Garantida',
+        en: 'Certifications and Guaranteed Quality',
+        zh: '认证和质量保证'
+      },
+      description: {
+        pt: 'Nossos produtos atendem aos mais rigorosos padrões internacionais de qualidade e segurança alimentar.',
+        en: 'Our products meet the most rigorous international standards of quality and food safety.',
+        zh: '我们的产品符合最严格的国际质量和食品安全标准。'
+      },
+      certified: {
+        pt: 'Certificado',
+        en: 'Certified',
+        zh: '已认证'
+      }
     }
   },
   contact: {
@@ -161,7 +244,17 @@ const translations: TranslationData = {
       en: 'Get in Touch',
       zh: '联系我们'
     },
+    subtitle: {
+      pt: 'Entre em contato conosco para discutir suas necessidades de importação. Nossa equipe especializada está pronta para atendê-lo.',
+      en: 'Contact us to discuss your import needs. Our specialized team is ready to serve you.',
+      zh: '联系我们讨论您的进口需求。我们的专业团队随时为您服务。'
+    },
     form: {
+      title: {
+        pt: 'Envie sua Mensagem',
+        en: 'Send Your Message',
+        zh: '发送您的信息'
+      },
       name: {
         pt: 'Nome',
         en: 'Name',

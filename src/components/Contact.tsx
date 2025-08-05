@@ -50,7 +50,7 @@ export const Contact = () => {
             {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Entre em contato conosco para discutir suas necessidades de importação. Nossa equipe especializada está pronta para atendê-lo.
+            {t('contact.subtitle')}
           </p>
           <div className="w-24 h-1 bg-gradient-accent mx-auto"></div>
         </div>
@@ -64,7 +64,7 @@ export const Contact = () => {
                   <MessageCircle className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-2xl font-heading font-semibold text-foreground">
-                  Envie sua Mensagem
+                  {t('contact.form.title')}
                 </h3>
               </div>
 
