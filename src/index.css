@@ -2,39 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Brasa Global Meats Design System - Corporate & Premium
+Colors: Verde (Brasil), Azul Escuro (Corporativo), Dourado (Premium), Branco (Limpo)
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    /* Base colors - Clean white background */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 25% 15%;
 
+    /* Card system */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 25% 15%;
 
+    /* Popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep Navy Blue (Corporativo) */
+    --primary: 210 85% 12%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 210 85% 18%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Brazilian Green (Referência Brasil) */
+    --secondary: 150 60% 25%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-hover: 150 60% 35%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Premium Gold (Qualidade) */
+    --accent: 45 85% 55%;
+    --accent-foreground: 210 25% 15%;
+    --accent-hover: 45 85% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted tones */
+    --muted: 210 15% 96%;
+    --muted-foreground: 210 15% 45%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 210 85% 12%;
+
+    /* Premium gradients for hero sections */
+    --gradient-primary: linear-gradient(135deg, hsl(210 85% 12%), hsl(210 85% 18%));
+    --gradient-secondary: linear-gradient(135deg, hsl(150 60% 25%), hsl(150 60% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 85% 55%), hsl(45 85% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 85% 12%) 0%, hsl(150 60% 25%) 100%);
+    
+    /* Shadows for depth and premium feel */
+    --shadow-sm: 0 2px 4px hsl(210 25% 15% / 0.1);
+    --shadow-md: 0 4px 12px hsl(210 25% 15% / 0.15);
+    --shadow-lg: 0 10px 30px hsl(210 25% 15% / 0.2);
+    --shadow-xl: 0 20px 40px hsl(210 25% 15% / 0.25);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
 
     --radius: 0.5rem;
 
