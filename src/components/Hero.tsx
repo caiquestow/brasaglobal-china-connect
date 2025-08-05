@@ -53,9 +53,9 @@ export const Hero = () => {
             </Button>
             <Button 
               size="lg"
-              variant="outline"
+              variant="accent"
               onClick={() => scrollToSection('about')}
-              className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-4 text-lg"
+              className="font-semibold px-8 py-4 text-lg"
             >
               {t('nav.about')}
             </Button>
