@@ -6,40 +6,35 @@ import { ArrowRight, Star, CheckCircle } from 'lucide-react';
 import premiumBeef from '@/assets/premium-beef.jpg';
 import premiumChicken from '@/assets/premium-chicken.jpg';
 import premiumPork from '@/assets/premium-pork.jpg';
-
 export const Products = () => {
-  const { t } = useLanguage();
-
-  const products = [
-    {
-      title: t('products.beef'),
-      description: t('products.beefDesc'),
-      image: premiumBeef,
-      features: [t('products.features.beef1'), t('products.features.beef2'), t('products.features.beef3'), t('products.features.beef4')]
-    },
-    {
-      title: t('products.chicken'),
-      description: t('products.chickenDesc'),
-      image: premiumChicken,
-      features: [t('products.features.chicken1'), t('products.features.chicken2'), t('products.features.chicken3'), t('products.features.chicken4')]
-    },
-    {
-      title: t('products.pork'),
-      description: t('products.porkDesc'),
-      image: premiumPork,
-      features: [t('products.features.pork1'), t('products.features.pork2'), t('products.features.pork3'), t('products.features.pork4')]
-    }
-  ];
-
+  const {
+    t
+  } = useLanguage();
+  const products = [{
+    title: t('products.beef'),
+    description: t('products.beefDesc'),
+    image: premiumBeef,
+    features: [t('products.features.beef1'), t('products.features.beef2'), t('products.features.beef3'), t('products.features.beef4')]
+  }, {
+    title: t('products.chicken'),
+    description: t('products.chickenDesc'),
+    image: premiumChicken,
+    features: [t('products.features.chicken1'), t('products.features.chicken2'), t('products.features.chicken3'), t('products.features.chicken4')]
+  }, {
+    title: t('products.pork'),
+    description: t('products.porkDesc'),
+    image: premiumPork,
+    features: [t('products.features.pork1'), t('products.features.pork2'), t('products.features.pork3'), t('products.features.pork4')]
+  }];
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <section id="products" className="py-20 bg-background">
+  return <section id="products" className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
@@ -52,14 +47,9 @@ export const Products = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {products.map((product, index) => (
-            <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-500 border-0 bg-white">
+          {products.map((product, index) => <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-500 border-0 bg-white">
               <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={product.image} 
-                  alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+                <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute top-4 right-4">
                   <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
@@ -78,46 +68,19 @@ export const Products = () => {
                 </p>
                 
                 <div className="space-y-3 mb-6">
-                  {product.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-secondary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
-                    </div>
-                  ))}
+                  {product.features.map((feature, featureIndex) => {})}
                 </div>
 
-                <Button 
-                  onClick={scrollToContact}
-                  className="w-full bg-gradient-primary hover:bg-primary-hover group"
-                >
+                <Button onClick={scrollToContact} className="w-full bg-gradient-primary hover:bg-primary-hover group">
                   {t('products.quote')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
 
         {/* Quality Certifications */}
-        <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-3xl font-heading font-bold text-white mb-4">
-              {t('products.certifications.title')}
-            </h3>
-            <p className="text-xl text-white/90 mb-8">
-              {t('products.certifications.description')}
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {['SIF', 'HACCP', 'ISO 22000', 'Halal'].map((cert, index) => (
-                <div key={index} className="bg-white/20 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-white mb-1">{cert}</div>
-                  <div className="text-sm text-white/80">{t('products.certifications.certified')}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        
       </div>
-    </section>
-  );
+    </section>;
 };
