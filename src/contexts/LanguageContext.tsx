@@ -280,12 +280,24 @@ const translations: TranslationData = {
         en: 'Message',
         zh: '信息'
       },
-      submit: {
-        pt: 'Enviar Mensagem',
-        en: 'Send Message',
-        zh: '发送信息'
-      }
-    },
+        submit: {
+          pt: 'Enviar Mensagem',
+          en: 'Send Message',
+          zh: '发送信息'
+        }
+      },
+      ready: {
+        title: {
+          pt: 'Pronto para Exportar?',
+          en: 'Ready to Export?',
+          zh: '准备出口了吗？'
+        },
+        description: {
+          pt: 'Nossa equipe especializada está preparada para discutir suas necessidades específicas e criar uma solução personalizada para sua empresa.',
+          en: 'Our specialized team is prepared to discuss your specific needs and create a customized solution for your company.',
+          zh: '我们的专业团队准备讨论您的具体需求，为您的公司创建定制解决方案。'
+        }
+      },
     info: {
       address: {
         pt: 'São Paulo, Brasil',

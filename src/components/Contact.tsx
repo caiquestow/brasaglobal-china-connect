@@ -120,10 +120,10 @@ export const Contact = () => {
             <Card className="bg-gradient-accent text-accent-foreground">
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-heading font-bold mb-4">
-                  Pronto para Exportar?
+                  {t('contact.ready.title')}
                 </h3>
                 <p className="mb-6 opacity-90">
-                  Nossa equipe especializada está preparada para discutir suas necessidades específicas e criar uma solução personalizada para sua empresa.
+                  {t('contact.ready.description')}
                 </p>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>

@@ -87,6 +87,10 @@ export interface TranslationData {
       message: Translation;
       submit: Translation;
     };
+    ready: {
+      title: Translation;
+      description: Translation;
+    };
     info: {
       address: Translation;
       phone: Translation;
