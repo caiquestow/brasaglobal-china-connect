@@ -14,6 +14,7 @@ export interface TranslationData {
     contact: Translation;
   };
   hero: {
+    tagline: Translation;
     title: Translation;
     subtitle: Translation;
     cta: Translation;
@@ -93,6 +94,10 @@ export interface TranslationData {
     };
   };
   footer: {
+    description: Translation;
+    navigation: Translation;
+    ourProducts: Translation;
+    website: Translation;
     copyright: Translation;
     rights: Translation;
   };

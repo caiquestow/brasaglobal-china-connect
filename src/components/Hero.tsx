@@ -30,7 +30,7 @@ export const Hero = () => {
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-1 bg-accent"></div>
             <span className="text-accent font-semibold tracking-wide uppercase text-sm">
-              Premium Brazilian Meats
+              {t('hero.tagline')}
             </span>
           </div>
           

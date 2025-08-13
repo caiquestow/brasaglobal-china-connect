@@ -21,32 +21,31 @@ export const Footer = () => {
           <div className="md:col-span-2">
             <img src={brasaLogo} alt="Brasa Global Meats" className="h-16 w-auto mb-6 filter brightness-0 invert" />
             <p className="text-primary-foreground/80 mb-6 max-w-md leading-relaxed">
-              Especialistas em exportação de carnes brasileiras premium para o mercado chinês. 
-              Qualidade, segurança e confiabilidade em cada operação.
+              {t('footer.description')}
             </p>
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-accent" />
-                <span className="text-sm">São Paulo, Brasil</span>
+                <span className="text-sm">{t('contact.info.address')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent" />
-                <span className="text-sm">+55 11 9999-9999</span>
+                <span className="text-sm">{t('contact.info.phone')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent" />
-                <span className="text-sm">contato@brasaglobalmeats.com</span>
+                <span className="text-sm">{t('contact.info.email')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Globe className="h-5 w-5 text-accent" />
-                <span className="text-sm">brasaglobalmeats.com</span>
+                <span className="text-sm">{t('footer.website')}</span>
               </div>
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Navegação</h3>
+            <h3 className="text-lg font-semibold mb-6">{t('footer.navigation')}</h3>
             <ul className="space-y-3">
               <li>
                 <button onClick={() => scrollToSection('home')} className="text-primary-foreground/80 hover:text-accent transition-colors">
@@ -73,7 +72,7 @@ export const Footer = () => {
 
           {/* Products */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Nossos Produtos</h3>
+            <h3 className="text-lg font-semibold mb-6">{t('footer.ourProducts')}</h3>
             <ul className="space-y-3">
               <li className="text-primary-foreground/80">{t('products.beef')}</li>
               <li className="text-primary-foreground/80">{t('products.chicken')}</li>

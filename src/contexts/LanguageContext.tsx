@@ -33,6 +33,11 @@ const translations: TranslationData = {
     }
   },
   hero: {
+    tagline: {
+      pt: 'Carnes Brasileiras Premium',
+      en: 'Premium Brazilian Meats',
+      zh: '优质巴西肉类'
+    },
     title: {
       pt: 'Exportadores Premium de Carnes Brasileiras para a China',
       en: 'Premium Brazilian Meat Exporters to China',
@@ -43,43 +48,43 @@ const translations: TranslationData = {
       en: 'Connecting the exceptional quality of Brazilian meats to the Chinese market with safety, reliability and excellence.',
       zh: '以安全、可靠和卓越的品质将巴西优质肉类连接到中国市场。'
     },
-      cta: {
-        pt: 'Conheça Nossos Produtos',
-        en: 'Discover Our Products',
-        zh: '了解我们的产品'
+    cta: {
+      pt: 'Conheça Nossos Produtos',
+      en: 'Discover Our Products',
+      zh: '了解我们的产品'
+    },
+    quality: {
+      certification: {
+        pt: 'Certificação Internacional',
+        en: 'International Certification',
+        zh: '国际认证'
       },
-      quality: {
-        certification: {
-          pt: 'Certificação Internacional',
-          en: 'International Certification',
-          zh: '国际认证'
-        },
-        certificationDesc: {
-          pt: 'Padrões globais de qualidade',
-          en: 'Global quality standards',
-          zh: '全球质量标准'
-        },
-        export: {
-          pt: 'Exportação Especializada',
-          en: 'Specialized Export',
-          zh: '专业出口'
-        },
-        exportDesc: {
-          pt: 'Foco no mercado chinês',
-          en: 'Focus on Chinese market',
-          zh: '专注中国市场'
-        },
-        premium: {
-          pt: 'Qualidade Premium',
-          en: 'Premium Quality',
-          zh: '优质品质'
-        },
-        premiumDesc: {
-          pt: 'Carnes brasileiras selecionadas',
-          en: 'Selected Brazilian meats',
-          zh: '精选巴西肉类'
-        }
+      certificationDesc: {
+        pt: 'Padrões globais de qualidade',
+        en: 'Global quality standards',
+        zh: '全球质量标准'
+      },
+      export: {
+        pt: 'Exportação Especializada',
+        en: 'Specialized Export',
+        zh: '专业出口'
+      },
+      exportDesc: {
+        pt: 'Foco no mercado chinês',
+        en: 'Focus on Chinese market',
+        zh: '专注中国市场'
+      },
+      premium: {
+        pt: 'Qualidade Premium',
+        en: 'Premium Quality',
+        zh: '优质品质'
+      },
+      premiumDesc: {
+        pt: 'Carnes brasileiras selecionadas',
+        en: 'Selected Brazilian meats',
+        zh: '精选巴西肉类'
       }
+    }
   },
   about: {
     title: {
@@ -300,6 +305,26 @@ const translations: TranslationData = {
     }
   },
   footer: {
+    description: {
+      pt: 'Especialistas em exportação de carnes brasileiras premium para o mercado chinês. Qualidade, segurança e confiabilidade em cada operação.',
+      en: 'Specialists in exporting premium Brazilian meats to the Chinese market. Quality, safety and reliability in every operation.',
+      zh: '专业向中国市场出口优质巴西肉类。每一次操作都保证质量、安全和可靠性。'
+    },
+    navigation: {
+      pt: 'Navegação',
+      en: 'Navigation',
+      zh: '导航'
+    },
+    ourProducts: {
+      pt: 'Nossos Produtos',
+      en: 'Our Products',
+      zh: '我们的产品'
+    },
+    website: {
+      pt: 'brasaglobalmeats.com',
+      en: 'brasaglobalmeats.com',
+      zh: 'brasaglobalmeats.com'
+    },
     copyright: {
       pt: '© 2024 Brasa Global Meats. Todos os direitos reservados.',
       en: '© 2024 Brasa Global Meats. All rights reserved.',
