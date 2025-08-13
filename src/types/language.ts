@@ -91,6 +91,25 @@ export interface TranslationData {
       title: Translation;
       description: Translation;
     };
+    cards: {
+      address: {
+        title: Translation;
+        subtitle: Translation;
+      };
+      phone: {
+        title: Translation;
+        subtitle: Translation;
+      };
+      email: {
+        title: Translation;
+        subtitle: Translation;
+      };
+      schedule: {
+        title: Translation;
+        content: Translation;
+        subtitle: Translation;
+      };
+    };
     info: {
       address: Translation;
       phone: Translation;

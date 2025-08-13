@@ -14,27 +14,32 @@ export const Contact = () => {
     // Handle form submission logic here
     console.log('Form submitted');
   };
-  const contactInfo = [{
-    icon: MapPin,
-    title: 'Endereço',
-    content: t('contact.info.address'),
-    secondary: 'Sede corporativa'
-  }, {
-    icon: Phone,
-    title: 'Telefone',
-    content: t('contact.info.phone'),
-    secondary: 'Atendimento comercial'
-  }, {
-    icon: Mail,
-    title: 'E-mail',
-    content: t('contact.info.email'),
-    secondary: 'Resposta em 24h'
-  }, {
-    icon: Clock,
-    title: 'Horário',
-    content: 'Seg - Sex: 8h às 18h',
-    secondary: 'Horário de Brasília'
-  }];
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: t('contact.cards.address.title'),
+      content: t('contact.info.address'),
+      secondary: t('contact.cards.address.subtitle')
+    },
+    {
+      icon: Phone,
+      title: t('contact.cards.phone.title'),
+      content: t('contact.info.phone'),
+      secondary: t('contact.cards.phone.subtitle')
+    },
+    {
+      icon: Mail,
+      title: t('contact.cards.email.title'),
+      content: t('contact.info.email'),
+      secondary: t('contact.cards.email.subtitle')
+    },
+    {
+      icon: Clock,
+      title: t('contact.cards.schedule.title'),
+      content: t('contact.cards.schedule.content'),
+      secondary: t('contact.cards.schedule.subtitle')
+    }
+  ];
   return <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">

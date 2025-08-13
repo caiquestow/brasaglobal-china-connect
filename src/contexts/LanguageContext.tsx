@@ -298,23 +298,78 @@ const translations: TranslationData = {
           zh: '我们的专业团队准备讨论您的具体需求，为您的公司创建定制解决方案。'
         }
       },
-    info: {
-      address: {
-        pt: 'São Paulo, Brasil',
-        en: 'São Paulo, Brazil',
-        zh: '巴西圣保罗'
+      cards: {
+        address: {
+          title: {
+            pt: 'Endereço',
+            en: 'Address',
+            zh: '地址'
+          },
+          subtitle: {
+            pt: 'Sede corporativa',
+            en: 'Corporate headquarters',
+            zh: '公司总部'
+          }
+        },
+        phone: {
+          title: {
+            pt: 'Telefone',
+            en: 'Phone',
+            zh: '电话'
+          },
+          subtitle: {
+            pt: 'Atendimento comercial',
+            en: 'Commercial service',
+            zh: '商务服务'
+          }
+        },
+        email: {
+          title: {
+            pt: 'E-mail',
+            en: 'Email',
+            zh: '电子邮件'
+          },
+          subtitle: {
+            pt: 'Resposta em 24h',
+            en: '24h response',
+            zh: '24小时回复'
+          }
+        },
+        schedule: {
+          title: {
+            pt: 'Horário',
+            en: 'Schedule',
+            zh: '营业时间'
+          },
+          content: {
+            pt: 'Seg - Sex: 8h às 18h',
+            en: 'Mon - Fri: 8am to 6pm',
+            zh: '周一至周五：上午8点至下午6点'
+          },
+          subtitle: {
+            pt: 'Horário de Brasília',
+            en: 'Brasília time',
+            zh: '巴西利亚时间'
+          }
+        }
       },
-      phone: {
-        pt: '+55 11 9999-9999',
-        en: '+55 11 9999-9999',
-        zh: '+55 11 9999-9999'
-      },
-      email: {
-        pt: 'contato@brasaglobalmeats.com',
-        en: 'contact@brasaglobalmeats.com',
-        zh: 'contact@brasaglobalmeats.com'
+      info: {
+        address: {
+          pt: 'São Paulo, Brasil',
+          en: 'São Paulo, Brazil',
+          zh: '巴西圣保罗'
+        },
+        phone: {
+          pt: '+55 11 9999-9999',
+          en: '+55 11 9999-9999',
+          zh: '+55 11 9999-9999'
+        },
+        email: {
+          pt: 'contato@brasaglobalmeats.com',
+          en: 'contact@brasaglobalmeats.com',
+          zh: 'contact@brasaglobalmeats.com'
+        }
       }
-    }
   },
   footer: {
     description: {
