@@ -360,9 +360,9 @@ const translations: TranslationData = {
           zh: '巴西圣保罗'
         },
         phone: {
-          pt: '+55 11 9999-9999',
-          en: '+55 11 9999-9999',
-          zh: '+55 11 9999-9999'
+          pt: '+55 11 96738-8266',
+          en: '+55 11 96738-8266',
+          zh: '+55 11 96738-8266'
         },
         email: {
           pt: 'contato@brasaglobalmeats.com',

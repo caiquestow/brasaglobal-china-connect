@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon } from 'lucide-react';
 export const Contact = () => {
   const {
     t
@@ -130,19 +130,21 @@ export const Contact = () => {
                 <p className="mb-6 opacity-90">
                   {t('contact.ready.description')}
                 </p>
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    
-                    
-                  </div>
-                  <div>
-                    
-                    
-                  </div>
-                  <div>
-                    
-                    
-                  </div>
+                <div className="flex justify-center gap-4 mt-6">
+                  <Button 
+                    className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
+                    onClick={() => window.open('https://wa.me/5511967388266', '_blank')}
+                  >
+                    <MessageCircleIcon className="h-5 w-5" />
+                    WhatsApp
+                  </Button>
+                  <Button 
+                    className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-2"
+                    onClick={() => window.open('weixin://dl/chat?+5511967388266', '_blank')}
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    WeChat
+                  </Button>
                 </div>
               </CardContent>
             </Card>

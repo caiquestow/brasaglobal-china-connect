@@ -68,7 +68,12 @@ export const Products = () => {
                 </p>
                 
                 <div className="space-y-3 mb-6">
-                  {product.features.map((feature, featureIndex) => {})}
+                  {product.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-sm text-foreground">{feature}</span>
+                    </div>
+                  ))}
                 </div>
 
                 <Button onClick={scrollToContact} className="w-full bg-gradient-primary hover:bg-primary-hover group">
