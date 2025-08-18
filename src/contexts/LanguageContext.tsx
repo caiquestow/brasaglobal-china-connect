@@ -288,9 +288,9 @@ const translations: TranslationData = {
       },
       ready: {
         title: {
-          pt: 'Pronto para Exportar?',
-          en: 'Ready to Export?',
-          zh: '准备出口了吗？'
+          pt: 'Pronto para exportar ou importar?',
+          en: 'Ready to export or import?',
+          zh: '准备好出口或进口了吗？'
         },
         description: {
           pt: 'Nossa equipe especializada está preparada para discutir suas necessidades específicas e criar uma solução personalizada para sua empresa.',
