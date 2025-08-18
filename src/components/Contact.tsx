@@ -125,7 +125,7 @@ export const Contact = () => {
             <Card className="bg-gradient-accent text-accent-foreground">
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-heading font-bold mb-4">
-                  {t('contact.ready.title')}
+                  Pronto para exportar ou importar?
                 </h3>
                 <p className="mb-6 opacity-90">
                   {t('contact.ready.description')}
