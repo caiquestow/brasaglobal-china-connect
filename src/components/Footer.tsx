@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MapPin, Phone, Mail, Globe } from 'lucide-react';
-import brasaLogo from '@/assets/brasa-logo.png';
+import brasaLogo from '/lovable-uploads/ded15c01-0b17-47f5-81b1-d4b26d9a7732.png';
 export const Footer = () => {
   const {
     t
@@ -19,7 +19,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <img src={brasaLogo} alt="Brasa Global Meats" className="h-16 w-auto mb-6 filter brightness-0 invert" />
+            <img src={brasaLogo} alt="Brasa Global Meats" className="h-16 w-auto mb-6" />
             <p className="text-primary-foreground/80 mb-6 max-w-md leading-relaxed">
               {t('footer.description')}
             </p>

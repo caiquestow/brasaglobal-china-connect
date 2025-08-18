@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
-import brasaLogo from '@/assets/brasa-logo.png';
+import brasaLogo from '/lovable-uploads/ded15c01-0b17-47f5-81b1-d4b26d9a7732.png';
 
 export const Header = () => {
   const { t } = useLanguage();
