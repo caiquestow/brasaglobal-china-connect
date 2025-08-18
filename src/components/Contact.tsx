@@ -52,6 +52,36 @@ export const Contact = () => {
           <div className="w-24 h-1 bg-gradient-accent mx-auto"></div>
         </div>
 
+        {/* Ready to Import/Export Section */}
+        <div className="mb-16 flex justify-center">
+          <Card className="bg-gradient-accent text-accent-foreground max-w-lg">
+            <CardContent className="p-8 text-center">
+              <h3 className="text-2xl font-heading font-bold mb-4">
+                Pronto para exportar ou importar?
+              </h3>
+              <p className="mb-6 opacity-90">
+                {t('contact.ready.description')}
+              </p>
+              <div className="flex justify-center gap-4 mt-6">
+                <Button 
+                  className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
+                  onClick={() => window.open('https://wa.me/5511967388266', '_blank')}
+                >
+                  <MessageCircleIcon className="h-5 w-5" />
+                  WhatsApp
+                </Button>
+                <Button 
+                  className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-2"
+                  onClick={() => window.open('weixin://dl/chat?+5511967388266', '_blank')}
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  WeChat
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <Card className="shadow-lg border-0">
@@ -121,33 +151,6 @@ export const Contact = () => {
                 </Card>)}
             </div>
 
-            {/* Additional Info */}
-            <Card className="bg-gradient-accent text-accent-foreground">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-heading font-bold mb-4">
-                  Pronto para exportar ou importar?
-                </h3>
-                <p className="mb-6 opacity-90">
-                  {t('contact.ready.description')}
-                </p>
-                <div className="flex justify-center gap-4 mt-6">
-                  <Button 
-                    className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
-                    onClick={() => window.open('https://wa.me/5511967388266', '_blank')}
-                  >
-                    <MessageCircleIcon className="h-5 w-5" />
-                    WhatsApp
-                  </Button>
-                  <Button 
-                    className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-2"
-                    onClick={() => window.open('weixin://dl/chat?+5511967388266', '_blank')}
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    WeChat
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
