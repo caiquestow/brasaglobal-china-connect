@@ -68,12 +68,7 @@ export const Products = () => {
                 </p>
                 
                 <div className="space-y-3 mb-6">
-                  {product.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-primary mt-0.5" aria-hidden="true" />
-                      <span className="text-foreground">{feature}</span>
-                    </div>
-                  ))}
+                  {product.features.map((feature, featureIndex) => {})}
                 </div>
 
                 <Button onClick={scrollToContact} className="w-full bg-gradient-primary hover:bg-primary-hover group">
