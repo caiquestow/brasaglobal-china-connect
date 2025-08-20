@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon, Copy, Check } from 'lucide-react';
+
 export const Contact = () => {
-  const {
-    t
-  } = useLanguage();
+  const { t } = useLanguage();
+  const [copiedWeChat, setCopiedWeChat] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted');
   };
+
+  const handleWeChatClick = () => {
+    const wechatInfo = "Brasa Global Meats - Faça leitura do código QR para me adicionar como amigo.";
+    navigator.clipboard.writeText(wechatInfo).then(() => {
+      setCopiedWeChat(true);
+      setTimeout(() => setCopiedWeChat(false), 2000);
+    });
+  };
+
   const contactInfo = [
     {
       icon: MapPin,
@@ -40,6 +49,7 @@ export const Contact = () => {
       secondary: t('contact.cards.schedule.subtitle')
     }
   ];
+
   return <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
@@ -72,11 +82,14 @@ export const Contact = () => {
                 </Button>
                 <Button 
                   className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-2"
-                  onClick={() => window.open('weixin://dl/chat?+5511967388266', '_blank')}
+                  onClick={handleWeChatClick}
                 >
-                  <MessageCircle className="h-5 w-5" />
-                  WeChat
+                  {copiedWeChat ? <Check className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
+                  WeChat {copiedWeChat ? '(Copiado!)' : ''}
                 </Button>
+              </div>
+              <div className="mt-4 text-sm opacity-75">
+                <p>WeChat: Escaneie o QR code para adicionar</p>
               </div>
             </CardContent>
           </Card>
