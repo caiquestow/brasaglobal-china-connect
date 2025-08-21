@@ -1,19 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { toast } from 'sonner';
+
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
 
 export const Contact = () => {
-  const { t } = useLanguage();
-  
+  const { t, language } = useLanguage();
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          language: language,
+          source: 'Brasa Global China Connect Website'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+        toast.success(
+          language === 'pt' ? 'Mensagem enviada com sucesso!' :
+          language === 'en' ? 'Message sent successfully!' :
+          '消息发送成功！'
+        );
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
+      toast.error(
+        language === 'pt' ? 'Erro ao enviar mensagem. Tente novamente.' :
+        language === 'en' ? 'Error sending message. Please try again.' :
+        '发送消息时出错。请重试。'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
 
@@ -122,13 +182,13 @@ export const Contact = () => {
                     <label className="block text-sm font-medium text-foreground mb-2">
                       {t('contact.form.name')} *
                     </label>
-                    <Input type="text" required className="w-full" placeholder="Seu nome completo" />
+                    <Input type="text" required className="w-full" placeholder="Seu nome completo" name="name" value={formData.name} onChange={handleInputChange} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       {t('contact.form.email')} *
                     </label>
-                    <Input type="email" required className="w-full" placeholder="seu@email.com" />
+                    <Input type="email" required className="w-full" placeholder="seu@email.com" name="email" value={formData.email} onChange={handleInputChange} />
                   </div>
                 </div>
 
@@ -136,19 +196,35 @@ export const Contact = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     {t('contact.form.company')}
                   </label>
-                  <Input type="text" className="w-full" placeholder="Nome da sua empresa" />
+                  <Input type="text" className="w-full" placeholder="Nome da sua empresa" name="company" value={formData.company} onChange={handleInputChange} />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     {t('contact.form.message')} *
                   </label>
-                  <Textarea required rows={6} className="w-full resize-none" placeholder="Descreva suas necessidades de importação, volumes desejados, especificações dos produtos..." />
+                  <Textarea required rows={6} className="w-full resize-none" placeholder="Descreva suas necessidades de importação, volumes desejados, especificações dos produtos..." name="message" value={formData.message} onChange={handleInputChange} />
                 </div>
 
-                <Button type="submit" className="w-full bg-gradient-primary hover:bg-primary-hover py-3 text-lg font-semibold">
-                  {t('contact.form.submit')}
+                <Button type="submit" className="w-full bg-gradient-primary hover:bg-primary-hover py-3 text-lg font-semibold" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  ) : (
+                    t('contact.form.submit')
+                  )}
                 </Button>
+                {submitStatus === 'success' && (
+                  <div className="flex items-center justify-center text-green-600 mt-4">
+                    <CheckCircle className="h-6 w-6 mr-2" />
+                    {t('contact.form.submit.success')}
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="flex items-center justify-center text-red-600 mt-4">
+                    <AlertCircle className="h-6 w-6 mr-2" />
+                    {t('contact.form.submit.error')}
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>
