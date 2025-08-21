@@ -86,10 +86,10 @@ export const Contact = () => {
                   <DialogContent className="sm:max-w-md">
                     <div className="text-center">
                       <img
-                        src="/lovable-uploads/29eb303e-4e10-4598-877b-f75237f3ecee.png"
+                        src="/lovable-uploads/ded15c01-0b17-47f5-81b1-d4b26d9a7732.png"
                         alt="Código QR do WeChat - Brasa Global Meats"
                         loading="lazy"
-                        className="mx-auto rounded-md shadow-md w-80 h-auto object-contain"
+                        className="mx-auto rounded-md shadow-md w-64 h-64 object-contain"
                       />
                       <p className="mt-4 text-sm text-muted-foreground">Escaneie o QR code no WeChat para iniciar a conversa.</p>
                     </div>
