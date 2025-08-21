@@ -13,8 +13,27 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
+    // Verificar se as variáveis de ambiente estão configuradas
+    if (!process.env.ZOHO_EMAIL || !process.env.ZOHO_PASSWORD) {
+      console.error('Variáveis de ambiente não configuradas:', {
+        ZOHO_EMAIL: !!process.env.ZOHO_EMAIL,
+        ZOHO_PASSWORD: !!process.env.ZOHO_PASSWORD
+      });
+      return res.status(500).json({ 
+        message: 'Email service not configured',
+        error: 'Missing environment variables'
+      });
+    }
+
+    console.log('Tentando enviar email com:', {
+      from: process.env.ZOHO_EMAIL,
+      to: 'contato@brasaglobalmeats.com',
+      name,
+      email
+    });
+
     // Configuração do transporter do Zoho
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.com',
       port: 587,
       secure: false, // true para 465, false para outras portas
@@ -22,7 +41,23 @@ export default async function handler(req, res) {
         user: process.env.ZOHO_EMAIL,
         pass: process.env.ZOHO_PASSWORD,
       },
+      // Adicionar timeout e logging
+      connectionTimeout: 60000,
+      greetingTimeout: 30000,
+      socketTimeout: 60000,
     });
+
+    // Verificar conexão SMTP
+    try {
+      await transporter.verify();
+      console.log('Conexão SMTP verificada com sucesso');
+    } catch (verifyError) {
+      console.error('Erro na verificação SMTP:', verifyError);
+      return res.status(500).json({ 
+        message: 'SMTP connection failed',
+        error: verifyError.message
+      });
+    }
 
     // Configuração do email
     const mailOptions = {
@@ -100,12 +135,32 @@ Para responder, use o email: ${email}
       `,
     };
 
+    console.log('Enviando email...');
+    
     // Envio do email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    
+    console.log('Email enviado com sucesso:', {
+      messageId: info.messageId,
+      response: info.response
+    });
 
-    res.status(200).json({ message: 'Email sent successfully' });
+    res.status(200).json({ 
+      message: 'Email sent successfully',
+      messageId: info.messageId
+    });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email' });
+    console.error('Erro detalhado ao enviar email:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code,
+      command: error.command
+    });
+    
+    res.status(500).json({ 
+      message: 'Failed to send email',
+      error: error.message,
+      code: error.code || 'UNKNOWN_ERROR'
+    });
   }
 }
