@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, MessageCircleIcon, Loader2, CheckCircle, AlertCircle, Send } from 'lucide-react';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 
@@ -55,10 +55,24 @@ export const Contact = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', company: '', message: '' });
+        
+        // Toast de sucesso com animação
         toast.success(
-          language === 'pt' ? 'Mensagem enviada com sucesso!' :
-          language === 'en' ? 'Message sent successfully!' :
-          '消息发送成功！'
+          language === 'pt' ? '🎉 Mensagem enviada com sucesso!' :
+          language === 'en' ? '🎉 Message sent successfully!' :
+          '🎉 消息发送成功！',
+          {
+            duration: 5000,
+            position: 'top-center',
+            style: {
+              background: 'linear-gradient(135deg, #10b981, #059669)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '16px',
+              fontWeight: '600'
+            }
+          }
         );
       } else {
         throw new Error('Failed to send message');
@@ -66,10 +80,24 @@ export const Contact = () => {
     } catch (error) {
       console.error('Error sending message:', error);
       setSubmitStatus('error');
+      
+      // Toast de erro com animação
       toast.error(
-        language === 'pt' ? 'Erro ao enviar mensagem. Tente novamente.' :
-        language === 'en' ? 'Error sending message. Please try again.' :
-        '发送消息时出错。请重试。'
+        language === 'pt' ? '❌ Erro ao enviar mensagem. Tente novamente.' :
+        language === 'en' ? '❌ Error sending message. Please try again.' :
+        '❌ 发送消息时出错。请重试。',
+        {
+          duration: 5000,
+          position: 'top-center',
+          style: {
+            background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '12px',
+            fontSize: '16px',
+            fontWeight: '600'
+          }
+        }
       );
     } finally {
       setIsSubmitting(false);
@@ -178,53 +206,102 @@ export const Contact = () => {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-foreground">
                       {t('contact.form.name')} *
                     </label>
-                    <Input type="text" required className="w-full" placeholder="Seu nome completo" name="name" value={formData.name} onChange={handleInputChange} />
+                    <Input 
+                      type="text" 
+                      required 
+                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
+                      placeholder="Seu nome completo" 
+                      name="name" 
+                      value={formData.name} 
+                      onChange={handleInputChange}
+                    />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-foreground">
                       {t('contact.form.email')} *
                     </label>
-                    <Input type="email" required className="w-full" placeholder="seu@email.com" name="email" value={formData.email} onChange={handleInputChange} />
+                    <Input 
+                      type="email" 
+                      required 
+                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
+                      placeholder="seu@email.com" 
+                      name="email" 
+                      value={formData.email} 
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-foreground">
                     {t('contact.form.company')}
                   </label>
-                  <Input type="text" className="w-full" placeholder="Nome da sua empresa" name="company" value={formData.company} onChange={handleInputChange} />
+                  <Input 
+                    type="text" 
+                    className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
+                    placeholder="Nome da sua empresa" 
+                    name="company" 
+                    value={formData.company} 
+                    onChange={handleInputChange}
+                  />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-foreground">
                     {t('contact.form.message')} *
                   </label>
-                  <Textarea required rows={6} className="w-full resize-none" placeholder="Descreva suas necessidades de importação, volumes desejados, especificações dos produtos..." name="message" value={formData.message} onChange={handleInputChange} />
+                  <Textarea 
+                    required 
+                    rows={6} 
+                    className="w-full resize-none transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
+                    placeholder="Descreva suas necessidades de importação, volumes desejados, especificações dos produtos..." 
+                    name="message" 
+                    value={formData.message} 
+                    onChange={handleInputChange}
+                  />
                 </div>
 
-                <Button type="submit" className="w-full bg-gradient-primary hover:bg-primary-hover py-3 text-lg font-semibold" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  ) : (
-                    t('contact.form.submit')
-                  )}
-                </Button>
-                {submitStatus === 'success' && (
-                  <div className="flex items-center justify-center text-green-600 mt-4">
-                    <CheckCircle className="h-6 w-6 mr-2" />
-                    {t('contact.form.submit.success')}
-                  </div>
-                )}
-                {submitStatus === 'error' && (
-                  <div className="flex items-center justify-center text-red-600 mt-4">
-                    <AlertCircle className="h-6 w-6 mr-2" />
-                    {t('contact.form.submit.error')}
-                  </div>
-                )}
+                                 <Button 
+                   type="submit" 
+                   className="w-full bg-gradient-primary hover:bg-primary-hover py-4 text-lg font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg disabled:scale-100 disabled:shadow-none" 
+                   disabled={isSubmitting}
+                 >
+                   {isSubmitting ? (
+                     <>
+                       <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                       <span>
+                         {language === 'pt' ? 'Enviando...' :
+                          language === 'en' ? 'Sending...' :
+                          '发送中...'}
+                       </span>
+                     </>
+                   ) : (
+                     <>
+                       <Send className="mr-3 h-5 w-5" />
+                       {t('contact.form.submit')}
+                     </>
+                   )}
+                 </Button>
+                                 {submitStatus === 'success' && (
+                   <div className="flex items-center justify-center text-green-600 mt-4 p-4 bg-green-50 rounded-lg border border-green-200 animate-in slide-in-from-top-2 duration-300">
+                     <CheckCircle className="h-6 w-6 mr-2 text-green-600" />
+                     <span className="font-medium">
+                       {t('contact.form.success')}
+                     </span>
+                   </div>
+                 )}
+                 {submitStatus === 'error' && (
+                   <div className="flex items-center justify-center text-red-600 mt-4 p-4 bg-red-50 rounded-lg border border-red-200 animate-in slide-in-from-top-2 duration-300">
+                     <AlertCircle className="h-6 w-6 mr-2 text-red-600" />
+                     <span className="font-medium">
+                       {t('contact.form.error')}
+                     </span>
+                   </div>
+                 )}
               </form>
             </CardContent>
           </Card>

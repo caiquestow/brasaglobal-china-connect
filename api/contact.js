@@ -63,7 +63,13 @@ export default async function handler(req, res) {
     const mailOptions = {
       from: process.env.ZOHO_EMAIL,
       to: 'contato@brasaglobalmeats.com',
+      replyTo: email, // Isso faz o "Responder" ir direto para o cliente
       subject: `[SITE] Nova mensagem de contato - ${name}`,
+      headers: {
+        'Reply-To': email,
+        'X-Contact-Email': email,
+        'X-Contact-Name': name
+      },
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
           <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
@@ -110,7 +116,10 @@ export default async function handler(req, res) {
           
           <div style="text-align: center; padding: 20px; color: #666; font-size: 12px;">
             <p>Esta mensagem foi enviada automaticamente pelo formulário de contato do site.</p>
-            <p>Para responder, use o email: ${email}</p>
+            <p><strong>💡 Dica:</strong> Clique em "Responder" para enviar direto para: ${email}</p>
+            <p style="background: #f0f9ff; padding: 10px; border-radius: 5px; border-left: 4px solid #3b82f6; margin-top: 10px;">
+              <strong>📧 Email do cliente:</strong> ${email}
+            </p>
           </div>
         </div>
       `,
@@ -131,7 +140,9 @@ Informações Adicionais:
 - Data/Hora: ${new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}
 
 Esta mensagem foi enviada automaticamente pelo formulário de contato do site.
-Para responder, use o email: ${email}
+
+💡 DICA: Clique em "Responder" para enviar direto para o cliente!
+📧 Email do cliente: ${email}
       `,
     };
 

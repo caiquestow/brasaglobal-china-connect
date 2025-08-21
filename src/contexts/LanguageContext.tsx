@@ -285,12 +285,12 @@ const translations: TranslationData = {
           en: 'Send Message',
           zh: '发送信息'
         },
-        'submit.success': {
+        success: {
           pt: 'Mensagem enviada com sucesso!',
           en: 'Message sent successfully!',
           zh: '消息发送成功！'
         },
-        'submit.error': {
+        error: {
           pt: 'Erro ao enviar mensagem',
           en: 'Error sending message',
           zh: '发送消息时出错'
