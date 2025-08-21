@@ -56,21 +56,23 @@ export const Contact = () => {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', company: '', message: '' });
         
-        // Toast de sucesso com animação
+        // Toast de sucesso profissional
         toast.success(
-          language === 'pt' ? '🎉 Mensagem enviada com sucesso!' :
-          language === 'en' ? '🎉 Message sent successfully!' :
-          '🎉 消息发送成功！',
+          language === 'pt' ? 'Mensagem enviada com sucesso' :
+          language === 'en' ? 'Message sent successfully' :
+          '消息发送成功',
           {
-            duration: 5000,
-            position: 'top-center',
+            duration: 4000,
+            position: 'top-right',
             style: {
-              background: 'linear-gradient(135deg, #10b981, #059669)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '12px',
-              fontSize: '16px',
-              fontWeight: '600'
+              background: '#ffffff',
+              color: '#059669',
+              border: '1px solid #d1fae5',
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontWeight: '500',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+              padding: '12px 16px'
             }
           }
         );
@@ -81,21 +83,23 @@ export const Contact = () => {
       console.error('Error sending message:', error);
       setSubmitStatus('error');
       
-      // Toast de erro com animação
+      // Toast de erro profissional
       toast.error(
-        language === 'pt' ? '❌ Erro ao enviar mensagem. Tente novamente.' :
-        language === 'en' ? '❌ Error sending message. Please try again.' :
-        '❌ 发送消息时出错。请重试。',
+        language === 'pt' ? 'Erro ao enviar mensagem. Tente novamente' :
+        language === 'en' ? 'Error sending message. Please try again' :
+        '发送消息时出错。请重试',
         {
-          duration: 5000,
-          position: 'top-center',
+          duration: 4000,
+          position: 'top-right',
           style: {
-            background: 'linear-gradient(135deg, #ef4444, #dc2626)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '12px',
-            fontSize: '16px',
-            fontWeight: '600'
+            background: '#ffffff',
+            color: '#dc2626',
+            border: '1px solid #fecaca',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: '500',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            padding: '12px 16px'
           }
         }
       );
@@ -287,17 +291,17 @@ export const Contact = () => {
                    )}
                  </Button>
                                  {submitStatus === 'success' && (
-                   <div className="flex items-center justify-center text-green-600 mt-4 p-4 bg-green-50 rounded-lg border border-green-200 animate-in slide-in-from-top-2 duration-300">
-                     <CheckCircle className="h-6 w-6 mr-2 text-green-600" />
-                     <span className="font-medium">
+                   <div className="flex items-center justify-center text-green-700 mt-4 p-3 bg-green-50 rounded-md border border-green-200 animate-in slide-in-from-top-2 duration-300">
+                     <CheckCircle className="h-5 w-5 mr-2 text-green-600" />
+                     <span className="text-sm font-medium">
                        {t('contact.form.success')}
                      </span>
                    </div>
                  )}
                  {submitStatus === 'error' && (
-                   <div className="flex items-center justify-center text-red-600 mt-4 p-4 bg-red-50 rounded-lg border border-red-200 animate-in slide-in-from-top-2 duration-300">
-                     <AlertCircle className="h-6 w-6 mr-2 text-red-600" />
-                     <span className="font-medium">
+                   <div className="flex items-center justify-center text-red-700 mt-4 p-3 bg-red-50 rounded-md border border-red-200 animate-in slide-in-from-top-2 duration-300">
+                     <AlertCircle className="h-5 w-5 mr-2 text-red-600" />
+                     <span className="text-sm font-medium">
                        {t('contact.form.error')}
                      </span>
                    </div>
