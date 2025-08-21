@@ -23,6 +23,8 @@ export const Contact = () => {
     company: '',
     message: ''
   });
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [touched, setTouched] = useState<{[key: string]: boolean}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -32,10 +34,87 @@ export const Contact = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Limpar erro quando o usuário começar a digitar
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+    
+    // Validação em tempo real para campos obrigatórios
+    if (touched[name] && ['name', 'email', 'message'].includes(name)) {
+      validateField(name, value);
+    }
+  };
+
+  const handleBlur = (name: string) => {
+    setTouched(prev => ({ ...prev, [name]: true }));
+    if (['name', 'email', 'message'].includes(name)) {
+      validateField(name, formData[name as keyof FormData]);
+    }
+  };
+
+  const validateField = (name: string, value: string) => {
+    let error = '';
+    
+    if (name === 'name' && !value.trim()) {
+      error = language === 'pt' ? 'Por favor, insira seu nome' : 
+              language === 'en' ? 'Please enter your name' : 
+              '请输入您的姓名';
+    } else if (name === 'email' && !value.trim()) {
+      error = language === 'pt' ? 'Por favor, insira seu e-mail' : 
+              language === 'en' ? 'Please enter your email' : 
+              '请输入您的电子邮件';
+    } else if (name === 'email' && value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      error = language === 'pt' ? 'Por favor, insira um e-mail válido' : 
+              language === 'en' ? 'Please enter a valid email' : 
+              '请输入有效的电子邮件';
+    } else if (name === 'message' && !value.trim()) {
+      error = language === 'pt' ? 'Por favor, insira sua mensagem' : 
+              language === 'en' ? 'Please enter your message' : 
+              '请输入您的信息';
+    }
+    
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = language === 'pt' ? 'Por favor, insira seu nome' : 
+                      language === 'en' ? 'Please enter your name' : 
+                      '请输入您的姓名';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = language === 'pt' ? 'Por favor, insira seu e-mail' : 
+                       language === 'en' ? 'Please enter your email' : 
+                       '请输入您的电子邮件';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = language === 'pt' ? 'Por favor, insira sua mensagem' : 
+                         language === 'en' ? 'Please enter your message' : 
+                         '请输入您的信息';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -55,6 +134,7 @@ export const Contact = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', company: '', message: '' });
+        setErrors({}); // Limpar erros
         
         // Toast de sucesso profissional
         toast.success(
@@ -183,13 +263,21 @@ export const Contact = () => {
                         loading="lazy"
                         className="mx-auto rounded-md shadow-md w-80 h-auto object-contain"
                       />
-                      <p className="mt-4 text-sm text-muted-foreground">Escaneie o QR code no WeChat para iniciar a conversa.</p>
+                      <p className="mt-4 text-sm text-muted-foreground">
+                        {language === 'pt' ? 'Escaneie o QR code no WeChat para iniciar a conversa.' : 
+                         language === 'en' ? 'Scan the QR code in WeChat to start a conversation.' : 
+                         '在微信中扫描二维码开始对话。'}
+                      </p>
                     </div>
                   </DialogContent>
                 </Dialog>
               </div>
               <div className="mt-4 text-sm opacity-75">
-                <p>WeChat: Escaneie o QR code para adicionar</p>
+                <p>
+                  {language === 'pt' ? 'WeChat: Escaneie o QR code para adicionar' : 
+                   language === 'en' ? 'WeChat: Scan the QR code to add' : 
+                   '微信：扫描二维码添加'}
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -214,29 +302,57 @@ export const Contact = () => {
                     <label className="block text-sm font-medium text-foreground">
                       {t('contact.form.name')} *
                     </label>
-                    <Input 
-                      type="text" 
-                      required 
-                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
-                      placeholder="Seu nome completo" 
-                      name="name" 
-                      value={formData.name} 
-                      onChange={handleInputChange}
-                    />
+                    <div className="relative">
+                      <Input 
+                        type="text" 
+                        className={`w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary ${
+                          errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 
+                          touched.name && formData.name.trim() ? 'border-green-500 focus:border-green-500 focus:ring-green-500/20' : ''
+                        }`}
+                        placeholder={language === 'pt' ? 'Seu nome completo' : language === 'en' ? 'Your full name' : '您的全名'} 
+                        name="name" 
+                        value={formData.name} 
+                        onChange={handleInputChange}
+                        onBlur={() => handleBlur('name')}
+                      />
+                      {touched.name && formData.name.trim() && !errors.name && (
+                        <CheckCircle className="h-5 w-5 text-green-500 absolute right-3 top-1/2 transform -translate-y-1/2 animate-in zoom-in duration-200" />
+                      )}
+                    </div>
+                    {errors.name && (
+                      <p className="text-sm text-red-600 mt-1 flex items-center gap-1 animate-in slide-in-from-top-2 duration-200">
+                        <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                        <span>{errors.name}</span>
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-foreground">
                       {t('contact.form.email')} *
                     </label>
-                    <Input 
-                      type="email" 
-                      required 
-                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
-                      placeholder="seu@email.com" 
-                      name="email" 
-                      value={formData.email} 
-                      onChange={handleInputChange}
-                    />
+                    <div className="relative">
+                      <Input 
+                        type="email" 
+                        className={`w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary ${
+                          errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 
+                          touched.email && formData.email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? 'border-green-500 focus:border-green-500 focus:ring-green-500/20' : ''
+                        }`}
+                        placeholder={language === 'pt' ? 'seu@email.com' : language === 'en' ? 'your@email.com' : 'your@email.com'} 
+                        name="email" 
+                        value={formData.email} 
+                        onChange={handleInputChange}
+                        onBlur={() => handleBlur('email')}
+                      />
+                      {touched.email && formData.email.trim() && !errors.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && (
+                        <CheckCircle className="h-5 w-5 text-green-500 absolute right-3 top-1/2 transform -translate-y-1/2 animate-in zoom-in duration-200" />
+                      )}
+                    </div>
+                    {errors.email && (
+                      <p className="text-sm text-red-600 mt-1 flex items-center gap-1 animate-in slide-in-from-top-2 duration-200">
+                        <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -247,7 +363,7 @@ export const Contact = () => {
                   <Input 
                     type="text" 
                     className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
-                    placeholder="Nome da sua empresa" 
+                    placeholder={language === 'pt' ? 'Nome da sua empresa' : language === 'en' ? 'Your company name' : '您的公司名称'} 
                     name="company" 
                     value={formData.company} 
                     onChange={handleInputChange}
@@ -258,15 +374,29 @@ export const Contact = () => {
                   <label className="block text-sm font-medium text-foreground">
                     {t('contact.form.message')} *
                   </label>
-                  <Textarea 
-                    required 
-                    rows={6} 
-                    className="w-full resize-none transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary" 
-                    placeholder="Descreva suas necessidades de importação, volumes desejados, especificações dos produtos..." 
-                    name="message" 
-                    value={formData.message} 
-                    onChange={handleInputChange}
-                  />
+                  <div className="relative">
+                    <Textarea 
+                      rows={6} 
+                      className={`w-full resize-none transition-all duration-300 focus:ring-2 focus:ring-primary/20 focus:border-primary ${
+                        errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 
+                        touched.message && formData.message.trim() ? 'border-green-500 focus:border-green-500 focus:ring-green-500/20' : ''
+                      }`}
+                      placeholder={language === 'pt' ? 'Descreva suas necessidades de importação, volumes desejados, especificações dos produtos...' : language === 'en' ? 'Describe your import needs, desired volumes, product specifications...' : '描述您的进口需求、所需数量、产品规格...'} 
+                      name="message" 
+                      value={formData.message} 
+                      onChange={handleInputChange}
+                      onBlur={() => handleBlur('message')}
+                    />
+                    {touched.message && formData.message.trim() && !errors.message && (
+                      <CheckCircle className="h-5 w-5 text-green-500 absolute right-3 top-1/2 transform -translate-y-1/2 animate-in zoom-in duration-200" />
+                    )}
+                  </div>
+                  {errors.message && (
+                    <p className="text-sm text-red-600 mt-1 flex items-center gap-1 animate-in slide-in-from-top-2 duration-200">
+                      <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                      <span>{errors.message}</span>
+                    </p>
+                  )}
                 </div>
 
                                  <Button 
